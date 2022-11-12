@@ -190,6 +190,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="c85-oN-m66"/>
                     <size key="freeformSize" width="390" height="800"/>
+                    <connections>
+                        <outlet property="lbUsername" destination="DqV-0u-KXp" id="8aN-RC-qhU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAV-EU-O58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

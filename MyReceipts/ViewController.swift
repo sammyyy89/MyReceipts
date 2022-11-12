@@ -10,10 +10,11 @@ import MessageUI
 import SafariServices
 
 import FirebaseAuth
-import FirebaseCore
-import GoogleSignIn
+
 
 class ViewController: UIViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
+    
+    @IBOutlet weak var lbUsername: UILabel!
     
     @IBAction func contactBtn(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
@@ -42,11 +43,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        currentUserName()
+
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func currentUserName() {
+        if let currentUser = Auth.auth().currentUser {
+            let userName = currentUser.displayName ?? "Name not found"
+            
+            self.lbUsername.text = "Welcome, \(userName)"
+        }
     }
     
 }
