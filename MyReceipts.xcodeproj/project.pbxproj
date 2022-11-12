@@ -13,9 +13,16 @@
 		8409F7F829199B8500ECBDF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8409F7F629199B8500ECBDF2 /* Main.storyboard */; };
 		8409F7FA29199B8700ECBDF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8409F7F929199B8700ECBDF2 /* Assets.xcassets */; };
 		8409F7FD29199B8700ECBDF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8409F7FB29199B8700ECBDF2 /* LaunchScreen.storyboard */; };
+		8409F8052919B07C00ECBDF2 /* viewReceiptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */; };
+		8409F8072919B62C00ECBDF2 /* receiptsDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */; };
+		8411C53429203CAA00CF29DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8411C53329203CAA00CF29DF /* GoogleService-Info.plist */; };
+		9C3D9ACCC350E9079FCEDBB5 /* Pods_MyReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3696B9668D7AAAAB28B4BC /* Pods_MyReceipts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AB97069C156A531CE7B6022 /* Pods-MyReceipts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReceipts.debug.xcconfig"; path = "Target Support Files/Pods-MyReceipts/Pods-MyReceipts.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3696B9668D7AAAAB28B4BC /* Pods_MyReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE1FBAF5A585EF47C2EF912 /* Pods-MyReceipts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyReceipts.release.xcconfig"; path = "Target Support Files/Pods-MyReceipts/Pods-MyReceipts.release.xcconfig"; sourceTree = "<group>"; };
 		8409F7ED29199B8500ECBDF2 /* MyReceipts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyReceipts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8409F7F029199B8500ECBDF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8409F7F229199B8500ECBDF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,9 @@
 		8409F7F929199B8700ECBDF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8409F7FC29199B8700ECBDF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8409F7FE29199B8700ECBDF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReceiptsVC.swift; sourceTree = "<group>"; };
+		8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = receiptsDataVC.swift; sourceTree = "<group>"; };
+		8411C53329203CAA00CF29DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3D9ACCC350E9079FCEDBB5 /* Pods_MyReceipts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76EE067006CF92EDAF3E0CDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C3696B9668D7AAAAB28B4BC /* Pods_MyReceipts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8409F7E429199B8500ECBDF2 = {
 			isa = PBXGroup;
 			children = (
 				8409F7EF29199B8500ECBDF2 /* MyReceipts */,
 				8409F7EE29199B8500ECBDF2 /* Products */,
+				ECB2DAC8D8B9552C60F6E349 /* Pods */,
+				76EE067006CF92EDAF3E0CDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +80,24 @@
 				8409F7F029199B8500ECBDF2 /* AppDelegate.swift */,
 				8409F7F229199B8500ECBDF2 /* SceneDelegate.swift */,
 				8409F7F429199B8500ECBDF2 /* ViewController.swift */,
+				8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */,
+				8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */,
 				8409F7F629199B8500ECBDF2 /* Main.storyboard */,
 				8409F7F929199B8700ECBDF2 /* Assets.xcassets */,
 				8409F7FB29199B8700ECBDF2 /* LaunchScreen.storyboard */,
+				8411C53329203CAA00CF29DF /* GoogleService-Info.plist */,
 				8409F7FE29199B8700ECBDF2 /* Info.plist */,
 			);
 			path = MyReceipts;
+			sourceTree = "<group>";
+		};
+		ECB2DAC8D8B9552C60F6E349 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AB97069C156A531CE7B6022 /* Pods-MyReceipts.debug.xcconfig */,
+				5DE1FBAF5A585EF47C2EF912 /* Pods-MyReceipts.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8409F80129199B8700ECBDF2 /* Build configuration list for PBXNativeTarget "MyReceipts" */;
 			buildPhases = (
+				D915612CA09AE294196ACA05 /* [CP] Check Pods Manifest.lock */,
 				8409F7E929199B8500ECBDF2 /* Sources */,
 				8409F7EA29199B8500ECBDF2 /* Frameworks */,
 				8409F7EB29199B8500ECBDF2 /* Resources */,
+				DE0685EC63B8D40B968E5DE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8409F7FD29199B8700ECBDF2 /* LaunchScreen.storyboard in Resources */,
+				8411C53429203CAA00CF29DF /* GoogleService-Info.plist in Resources */,
 				8409F7FA29199B8700ECBDF2 /* Assets.xcassets in Resources */,
 				8409F7F829199B8500ECBDF2 /* Main.storyboard in Resources */,
 			);
@@ -133,13 +169,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D915612CA09AE294196ACA05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyReceipts-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE0685EC63B8D40B968E5DE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyReceipts/Pods-MyReceipts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyReceipts/Pods-MyReceipts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyReceipts/Pods-MyReceipts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8409F7E929199B8500ECBDF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8409F7F529199B8500ECBDF2 /* ViewController.swift in Sources */,
+				8409F8072919B62C00ECBDF2 /* receiptsDataVC.swift in Sources */,
 				8409F7F129199B8500ECBDF2 /* AppDelegate.swift in Sources */,
+				8409F8052919B07C00ECBDF2 /* viewReceiptsVC.swift in Sources */,
 				8409F7F329199B8500ECBDF2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,12 +362,13 @@
 		};
 		8409F80229199B8700ECBDF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AB97069C156A531CE7B6022 /* Pods-MyReceipts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 939T4AGYL5;
+				DEVELOPMENT_TEAM = P354VK2Y2R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyReceipts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -295,6 +376,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,12 +392,13 @@
 		};
 		8409F80329199B8700ECBDF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DE1FBAF5A585EF47C2EF912 /* Pods-MyReceipts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 939T4AGYL5;
+				DEVELOPMENT_TEAM = P354VK2Y2R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyReceipts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -323,6 +406,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

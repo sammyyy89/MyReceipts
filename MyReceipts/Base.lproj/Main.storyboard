@@ -1,24 +1,304 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXe-6j-7wp">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Receipts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-NI-dTf">
+                                <rect key="frame" x="91.666666666666671" y="171" width="206.66666666666663" height="43.666666666666657"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <color key="textColor" red="0.85098039215686272" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep all your receipts on your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtQ-Wn-hwb">
+                                <rect key="frame" x="40.666666666666657" y="224.66666666666666" width="309" height="23"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykV-P5-ikg">
+                                <rect key="frame" x="90" y="397" width="210" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="42T-CR-g4F"/>
+                                    <constraint firstAttribute="height" constant="50" id="pWy-ib-hEV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign in with Google">
+                                    <backgroundConfiguration key="background" image="Google"/>
+                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="GoogleSignInBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JQy-1z-9QR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z5Y-NI-dTf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5z7-Q5-MM3"/>
+                            <constraint firstItem="gtQ-Wn-hwb" firstAttribute="top" secondItem="z5Y-NI-dTf" secondAttribute="bottom" constant="10" id="9bR-ul-dUn"/>
+                            <constraint firstItem="z5Y-NI-dTf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="AaD-ZF-tfD"/>
+                            <constraint firstItem="gtQ-Wn-hwb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BGq-iI-G7I"/>
+                            <constraint firstItem="ykV-P5-ikg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V9g-jW-G4B"/>
+                            <constraint firstItem="ykV-P5-ikg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y0l-1z-mbX"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ExL-uo-Idp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="933.84615384615381" y="-28.436018957345969"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="rUL-bh-cvL">
+            <objects>
+                <viewController id="4Yk-cT-ipC" customClass="ViewController" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TNz-Iz-dNu">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-ce-CY2">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOo-5h-1nR">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-yy-cD9">
+                                                <rect key="frame" x="125" y="257.33333333333331" width="140" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="BkC-l3-9Xx"/>
+                                                    <constraint firstAttribute="width" constant="140" id="d99-Pi-Uvc"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Add a new receipt">
+                                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="15"/>
+                                                    <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                                    <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="fJV-tC-2sE" kind="show" id="dRo-GP-4Y9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fla-WQ-sRz">
+                                                <rect key="frame" x="125" y="347.33333333333331" width="140" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="eMt-WG-ITh"/>
+                                                    <constraint firstAttribute="width" constant="140" id="r9s-bS-cnu"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="View my receipts">
+                                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="15"/>
+                                                    <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                                    <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="PVE-uX-rrk" kind="show" id="fg2-86-84y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Y-OI-0K9">
+                                                <rect key="frame" x="125" y="437.33333333333331" width="140" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="NVf-y6-6Gc"/>
+                                                    <constraint firstAttribute="height" constant="60" id="fJ9-fu-YdN"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Contact Us">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </backgroundConfiguration>
+                                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="17"/>
+                                                    <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="contactBtn:" destination="4Yk-cT-ipC" eventType="touchUpInside" id="i1x-pl-MqJ"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Saemi An" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqV-0u-KXp">
+                                                <rect key="frame" x="116.66666666666667" y="170" width="156.66666666666663" height="27.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="WfQ-yy-cD9" firstAttribute="centerX" secondItem="OOo-5h-1nR" secondAttribute="centerX" id="7Es-nG-1ev"/>
+                                            <constraint firstItem="fla-WQ-sRz" firstAttribute="top" secondItem="WfQ-yy-cD9" secondAttribute="bottom" constant="30" id="7Mq-W8-ljn"/>
+                                            <constraint firstItem="WfQ-yy-cD9" firstAttribute="top" secondItem="DqV-0u-KXp" secondAttribute="bottom" constant="60" id="A4N-fO-dtC"/>
+                                            <constraint firstItem="DqV-0u-KXp" firstAttribute="top" secondItem="OOo-5h-1nR" secondAttribute="top" constant="170" id="NEf-CL-IWV"/>
+                                            <constraint firstItem="DqV-0u-KXp" firstAttribute="centerX" secondItem="OOo-5h-1nR" secondAttribute="centerX" id="dzI-sC-TBk"/>
+                                            <constraint firstItem="fla-WQ-sRz" firstAttribute="centerX" secondItem="OOo-5h-1nR" secondAttribute="centerX" id="fEE-wg-h5W"/>
+                                            <constraint firstItem="t8Y-OI-0K9" firstAttribute="top" secondItem="fla-WQ-sRz" secondAttribute="bottom" constant="30" id="go2-9b-2qk"/>
+                                            <constraint firstItem="t8Y-OI-0K9" firstAttribute="centerX" secondItem="OOo-5h-1nR" secondAttribute="centerX" id="qXX-qv-hQw"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OOo-5h-1nR" firstAttribute="leading" secondItem="Cdx-ce-CY2" secondAttribute="leading" id="ELr-UQ-YSF"/>
+                                    <constraint firstItem="OOo-5h-1nR" firstAttribute="centerX" secondItem="Cdx-ce-CY2" secondAttribute="centerX" id="Ydt-6R-SXX"/>
+                                    <constraint firstAttribute="trailing" secondItem="OOo-5h-1nR" secondAttribute="trailing" id="bhf-zm-nB0"/>
+                                    <constraint firstItem="OOo-5h-1nR" firstAttribute="centerY" secondItem="Cdx-ce-CY2" secondAttribute="centerY" id="cfN-y2-jaK"/>
+                                    <constraint firstAttribute="bottom" secondItem="OOo-5h-1nR" secondAttribute="bottom" id="iqb-YW-Pq5"/>
+                                    <constraint firstItem="OOo-5h-1nR" firstAttribute="top" secondItem="Cdx-ce-CY2" secondAttribute="top" id="siq-DA-rbi"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sYo-Xr-9zM"/>
+                        <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cdx-ce-CY2" firstAttribute="centerY" secondItem="TNz-Iz-dNu" secondAttribute="centerY" id="9Hl-pL-rOc"/>
+                            <constraint firstItem="Cdx-ce-CY2" firstAttribute="centerX" secondItem="TNz-Iz-dNu" secondAttribute="centerX" id="VzM-1Q-Kix"/>
+                            <constraint firstItem="Cdx-ce-CY2" firstAttribute="leading" secondItem="sYo-Xr-9zM" secondAttribute="leading" id="WWu-SJ-acX"/>
+                            <constraint firstItem="Cdx-ce-CY2" firstAttribute="bottom" secondItem="sYo-Xr-9zM" secondAttribute="bottom" id="y7w-zI-3sF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="c85-oN-m66"/>
+                    <size key="freeformSize" width="390" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAV-EU-O58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1747.6923076923076" y="-28.436018957345969"/>
+        </scene>
+        <!--View ReceiptsVC-->
+        <scene sceneID="26N-ci-AWV">
+            <objects>
+                <viewController id="PVE-uX-rrk" customClass="viewReceiptsVC" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u4s-6T-tyH">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="b1B-wK-MX0"/>
+                        <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dbo-b3-IN1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HD5-V0-RZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3311" y="383"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LWD-5e-6Am">
+            <objects>
+                <viewController id="fJV-tC-2sE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mzp-A0-iUO">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvI-Yg-bhr">
+                                <rect key="frame" x="110" y="247" width="170" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="N1N-Ba-UJ9"/>
+                                    <constraint firstAttribute="width" constant="170" id="PSQ-kT-tOz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="fxA-41-bmV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="v12-zP-5xr"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Take Photo">
+                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                    <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZT-MU-M1D">
+                                <rect key="frame" x="110" y="327" width="170" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="ds4-D3-QZe"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="iL4-h7-g9t"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="r18-0B-8FZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="xwh-2C-SvF"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Photo Library">
+                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN-Bold" family="Malayalam Sangam MN" pointSize="17"/>
+                                    <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                    <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Htv-1c-C8g">
+                                <rect key="frame" x="239" y="258" width="40" height="27.666666666666686"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="jyX-Bo-JE4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BCD-l7-RB7">
+                                <rect key="frame" x="239" y="331.66666666666669" width="40" height="36.999999999999972"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="2y8-o5-suB"/>
+                                    <constraint firstAttribute="height" constant="40" id="Zf9-0x-oJv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to get your receipt?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4O-4d-A1O">
+                                <rect key="frame" x="50.666666666666657" y="194" width="288.66666666666674" height="21"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2Hu-xG-GzC"/>
+                        <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rvI-Yg-bhr" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="1BX-wL-F8e"/>
+                            <constraint firstItem="l4O-4d-A1O" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="CkN-Cu-sNz"/>
+                            <constraint firstItem="rvI-Yg-bhr" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="EP6-jp-Pzx"/>
+                            <constraint firstItem="Htv-1c-C8g" firstAttribute="top" secondItem="2Hu-xG-GzC" secondAttribute="top" constant="210" id="IrY-YS-Nlk"/>
+                            <constraint firstItem="rvI-Yg-bhr" firstAttribute="top" secondItem="l4O-4d-A1O" secondAttribute="bottom" constant="32" id="UJ7-yI-Gum"/>
+                            <constraint firstItem="6ZT-MU-M1D" firstAttribute="top" secondItem="rvI-Yg-bhr" secondAttribute="bottom" constant="30" id="Zd0-3U-U1U"/>
+                            <constraint firstItem="rvI-Yg-bhr" firstAttribute="top" secondItem="2Hu-xG-GzC" secondAttribute="top" constant="200" id="asH-df-dAe"/>
+                            <constraint firstItem="6ZT-MU-M1D" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="bDW-98-E1I"/>
+                            <constraint firstItem="l4O-4d-A1O" firstAttribute="top" secondItem="2Hu-xG-GzC" secondAttribute="top" constant="147" id="eIL-vl-gcB"/>
+                            <constraint firstItem="BCD-l7-RB7" firstAttribute="top" secondItem="rvI-Yg-bhr" secondAttribute="bottom" constant="33" id="grm-rE-jZF"/>
+                            <constraint firstItem="Htv-1c-C8g" firstAttribute="leading" secondItem="2Hu-xG-GzC" secondAttribute="leading" constant="239" id="hl3-Df-mfB"/>
+                            <constraint firstItem="BCD-l7-RB7" firstAttribute="leading" secondItem="2Hu-xG-GzC" secondAttribute="leading" constant="239" id="mZS-lp-0xY"/>
+                            <constraint firstItem="Htv-1c-C8g" firstAttribute="centerY" secondItem="rvI-Yg-bhr" secondAttribute="centerY" id="uju-oi-uE0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6mu-6E-S6v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wY2-wQ-uk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587.6923076923076" y="-247.39336492890993"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0BU-Ko-k7x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vXe-6j-7wp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d7L-jh-o4P">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YtS-nW-N94"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OzI-ju-iSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4.615384615384615" y="-28.436018957345969"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Google" width="285" height="69"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
