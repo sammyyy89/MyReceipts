@@ -16,6 +16,7 @@
 		8409F8052919B07C00ECBDF2 /* viewReceiptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */; };
 		8409F8072919B62C00ECBDF2 /* receiptsDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */; };
 		8411C53429203CAA00CF29DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8411C53329203CAA00CF29DF /* GoogleService-Info.plist */; };
+		8411C5362920618F00CF29DF /* mainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411C5352920618F00CF29DF /* mainVC.swift */; };
 		9C3D9ACCC350E9079FCEDBB5 /* Pods_MyReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3696B9668D7AAAAB28B4BC /* Pods_MyReceipts.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReceiptsVC.swift; sourceTree = "<group>"; };
 		8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = receiptsDataVC.swift; sourceTree = "<group>"; };
 		8411C53329203CAA00CF29DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8411C5352920618F00CF29DF /* mainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				8409F8042919B07C00ECBDF2 /* viewReceiptsVC.swift */,
 				8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */,
 				8409F7F629199B8500ECBDF2 /* Main.storyboard */,
+				8411C5352920618F00CF29DF /* mainVC.swift */,
 				8409F7F929199B8700ECBDF2 /* Assets.xcassets */,
 				8409F7FB29199B8700ECBDF2 /* LaunchScreen.storyboard */,
 				8411C53329203CAA00CF29DF /* GoogleService-Info.plist */,
@@ -221,6 +224,7 @@
 				8409F7F129199B8500ECBDF2 /* AppDelegate.swift in Sources */,
 				8409F8052919B07C00ECBDF2 /* viewReceiptsVC.swift in Sources */,
 				8409F7F329199B8500ECBDF2 /* SceneDelegate.swift in Sources */,
+				8411C5362920618F00CF29DF /* mainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

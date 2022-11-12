@@ -39,31 +39,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
         }
     }
     
-    @IBAction func GoogleSignInBtn(_ sender: GIDSignInButton) {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
-        
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [self] user, error in
-            guard error == nil else { return }
-            
-            guard let authentication = user?.authentication,
-                  let idToken = authentication.idToken
-            else {
-                return
-            }
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-            
-            Auth.auth().signIn(with: credential) { (result, error) in
-                if let error = error {
-                    print("Firebase auth fails with error: \(error.localizedDescription)")
-                } else if let result = result {
-                    print("Login success: \(result)")
-                    // move page
-                }
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

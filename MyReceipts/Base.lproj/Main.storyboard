@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainPage" id="BYZ-38-t0r" customClass="mainVC" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykV-P5-ikg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykV-P5-ikg" userLabel="GoogleSignInBtn">
                                 <rect key="frame" x="90" y="397" width="210" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="42T-CR-g4F"/>
@@ -42,7 +42,22 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="GoogleSignInBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JQy-1z-9QR"/>
+                                    <action selector="GoogleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2NP-NE-45m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cD-fN-Cex">
+                                <rect key="frame" x="152" y="311" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="13"/>
+                                    <color key="baseForegroundColor" red="0.0" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOutBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AIj-pp-km4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,6 +73,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ExL-uo-Idp"/>
+                    <connections>
+                        <outlet property="GoogleBtn" destination="ykV-P5-ikg" id="yRA-kZ-Lj9"/>
+                        <outlet property="appName" destination="z5Y-NI-dTf" id="Asw-Aj-A0s"/>
+                        <outlet property="lbSub" destination="gtQ-Wn-hwb" id="WA2-Dc-pOR"/>
+                        <outlet property="signOutBtn" destination="2cD-fN-Cex" id="z57-St-sRx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +87,7 @@
         <!--Home-->
         <scene sceneID="rUL-bh-cvL">
             <objects>
-                <viewController id="4Yk-cT-ipC" customClass="ViewController" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="optionsPage" id="4Yk-cT-ipC" customClass="ViewController" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TNz-Iz-dNu">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
