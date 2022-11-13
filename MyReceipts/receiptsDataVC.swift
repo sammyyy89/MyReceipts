@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class receiptsDataVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let realm = try! Realm()
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -55,5 +58,20 @@ class receiptsDataVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated:true)
         print(items[indexPath.row])
+    }
+}
+
+class receiptsData: Object {
+    @objc dynamic var user: String = "" // user’s email address associated with My Receipts
+    @objc dynamic var receipts: String = ""
+}
+
+func loadImagefromPath(_ path: NSString) -> UIImage? {
+    let image = UIImage(contentsOfFile: path as String)
+    
+    if image == nil {
+        return UIImage()
+    } else {
+        return image
     }
 }

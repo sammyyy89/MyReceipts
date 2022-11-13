@@ -214,10 +214,10 @@
             </objects>
             <point key="canvasLocation" x="3311" y="383"/>
         </scene>
-        <!--View Controller-->
+        <!--PhotoVC-->
         <scene sceneID="LWD-5e-6Am">
             <objects>
-                <viewController id="fJV-tC-2sE" sceneMemberID="viewController">
+                <viewController id="fJV-tC-2sE" customClass="photoVC" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mzp-A0-iUO">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,6 +236,9 @@
                                     <color key="baseForegroundColor" systemColor="systemTealColor"/>
                                     <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="cameraButtonTapped" destination="fJV-tC-2sE" eventType="touchUpInside" id="xtR-zT-BhS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZT-MU-M1D">
                                 <rect key="frame" x="110" y="327" width="170" height="50"/>
@@ -251,6 +254,9 @@
                                     <color key="baseForegroundColor" systemColor="systemTealColor"/>
                                     <color key="baseBackgroundColor" red="0.91372549020000005" green="0.99607843139999996" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapButton" destination="fJV-tC-2sE" eventType="touchUpInside" id="Ey2-qM-0ae"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Htv-1c-C8g">
                                 <rect key="frame" x="239" y="258" width="40" height="27.666666666666686"/>
@@ -273,14 +279,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dAm-Lk-p7X">
+                                <rect key="frame" x="87" y="417" width="216" height="267"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-PD-0JV">
+                                <rect key="frame" x="115" y="692" width="160" height="28.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="ibN-CZ-r7R"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Continue with this photo">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.0" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="12"/>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="continueBtn" destination="fJV-tC-2sE" eventType="touchUpInside" id="nZT-Cc-9ck"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Hu-xG-GzC"/>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.97254901959999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rvI-Yg-bhr" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="1BX-wL-F8e"/>
+                            <constraint firstItem="dAm-Lk-p7X" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="2gp-JY-koE"/>
                             <constraint firstItem="l4O-4d-A1O" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="CkN-Cu-sNz"/>
                             <constraint firstItem="rvI-Yg-bhr" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="EP6-jp-Pzx"/>
+                            <constraint firstItem="nzZ-PD-0JV" firstAttribute="top" secondItem="dAm-Lk-p7X" secondAttribute="bottom" constant="8" symbolic="YES" id="ExB-mJ-UcE"/>
                             <constraint firstItem="Htv-1c-C8g" firstAttribute="top" secondItem="2Hu-xG-GzC" secondAttribute="top" constant="210" id="IrY-YS-Nlk"/>
+                            <constraint firstItem="nzZ-PD-0JV" firstAttribute="centerX" secondItem="mzp-A0-iUO" secondAttribute="centerX" id="JjN-TW-FIq"/>
+                            <constraint firstItem="dAm-Lk-p7X" firstAttribute="leading" secondItem="2Hu-xG-GzC" secondAttribute="leading" constant="87" id="NUf-9S-KBj"/>
+                            <constraint firstItem="dAm-Lk-p7X" firstAttribute="top" secondItem="6ZT-MU-M1D" secondAttribute="bottom" constant="40" id="QDg-G0-RgT"/>
                             <constraint firstItem="rvI-Yg-bhr" firstAttribute="top" secondItem="l4O-4d-A1O" secondAttribute="bottom" constant="32" id="UJ7-yI-Gum"/>
                             <constraint firstItem="6ZT-MU-M1D" firstAttribute="top" secondItem="rvI-Yg-bhr" secondAttribute="bottom" constant="30" id="Zd0-3U-U1U"/>
                             <constraint firstItem="rvI-Yg-bhr" firstAttribute="top" secondItem="2Hu-xG-GzC" secondAttribute="top" constant="200" id="asH-df-dAe"/>
@@ -289,10 +320,16 @@
                             <constraint firstItem="BCD-l7-RB7" firstAttribute="top" secondItem="rvI-Yg-bhr" secondAttribute="bottom" constant="33" id="grm-rE-jZF"/>
                             <constraint firstItem="Htv-1c-C8g" firstAttribute="leading" secondItem="2Hu-xG-GzC" secondAttribute="leading" constant="239" id="hl3-Df-mfB"/>
                             <constraint firstItem="BCD-l7-RB7" firstAttribute="leading" secondItem="2Hu-xG-GzC" secondAttribute="leading" constant="239" id="mZS-lp-0xY"/>
+                            <constraint firstItem="2Hu-xG-GzC" firstAttribute="bottom" secondItem="dAm-Lk-p7X" secondAttribute="bottom" constant="103" id="o1c-3K-IJu"/>
                             <constraint firstItem="Htv-1c-C8g" firstAttribute="centerY" secondItem="rvI-Yg-bhr" secondAttribute="centerY" id="uju-oi-uE0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6mu-6E-S6v"/>
+                    <connections>
+                        <outlet property="continueButton" destination="nzZ-PD-0JV" id="1fb-Cr-u0h"/>
+                        <outlet property="selectBtn" destination="6ZT-MU-M1D" id="OT1-I4-DqN"/>
+                        <outlet property="selectedImg" destination="dAm-Lk-p7X" id="Jiv-MD-GXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY2-wQ-uk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

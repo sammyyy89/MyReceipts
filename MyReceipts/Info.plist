@@ -32,5 +32,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&quot;My Receipts&quot; Would Like to Access Your Photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;My Receipts&quot; Would Like to Access the Camera</string>
 </dict>
 </plist>
