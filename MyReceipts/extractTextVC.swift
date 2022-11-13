@@ -7,8 +7,12 @@
 
 import Vision
 import UIKit
+import RealmSwift
+import FirebaseAuth
 
 class extractTextVC: UIViewController {
+    
+    let realm = try! Realm()
     
     private let label: UILabel = {
         let label = UILabel()
@@ -18,14 +22,17 @@ class extractTextVC: UIViewController {
         return label
     }()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "receipt2")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    var imageView: UIImageView = {
+    var imageView = UIImageView()
+    imageView.image = imageView.image
+    imageView.contentMode = .scaleAspectFit
+    return imageView
     }()
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var saveBtn: UIButton!
+    
+    let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +53,33 @@ class extractTextVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        
+        saveBtn.translatesAutoresizingMaskIntoConstraints = false
+        saveBtn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 3).isActive = true
+        saveBtn.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
     }
     
-    private func recognizeText(image: UIImage?) {
+    @objc func saveBtnPressed() {
+        var saveAs = UITextField()
+        
+        let alert = UIAlertController(title: "Save as", message: "Enter a name to save this data as", preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = ""
+            
+            saveAs = alertTextField
+        }
+        
+        let action = UIAlertAction(title: "Save", style: .default) { action in
+            print(saveAs.text!)
+            // 저장 버튼 눌렀을 때의 처리 -> 유저 이메일, 데이터 내용, 입력 받은 필드값이 모두 데이터베이스에 저장되어야 함
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func recognizeText(image: UIImage?) {
         guard let cgImage = image?.cgImage else { return }
         
         // Handler
@@ -60,13 +91,14 @@ class extractTextVC: UIViewController {
                   error == nil else {
                 return
             }
-            let text = observations.compactMap({
+            let myText = observations.compactMap({
                 $0.topCandidates(1).first?.string
             }).joined(separator: "\n")
             
             DispatchQueue.main.async {
-                self?.label.text = text
+                self?.label.text = myText
             }
+        
         }
         
         // Process request
@@ -79,3 +111,10 @@ class extractTextVC: UIViewController {
     }
     
 }
+
+class receiptsData: Object {
+    @objc dynamic var user: String = "" // user’s email address associated with My Receipts
+    @objc dynamic var dataName: String = ""
+    @objc dynamic var receipts: String = ""
+}
+

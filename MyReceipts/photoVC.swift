@@ -18,6 +18,13 @@ class photoVC: UIViewController {
         continueButton.isHidden = true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "passImage" {
+            let dvc = segue.destination as! extractTextVC
+            dvc.imageView.image = selectedImg.image 
+        }
+    }
+    
     @IBAction func cameraButtonTapped() {
         let picker = UIImagePickerController()
         picker.sourceType = .camera
