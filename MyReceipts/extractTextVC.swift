@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class extractTextVC: UIViewController {
     
-    let realm = try! Realm()
+    var receiptText:String?
     
     private let label: UILabel = {
         let label = UILabel()
@@ -36,10 +36,16 @@ class extractTextVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(label)
         view.addSubview(imageView)
         
         recognizeText(image: imageView.image)
+    }
+    
+    private func movePage(where: String) {
+        let pushVC = self.storyboard?.instantiateViewController(withIdentifier: `where`)
+        self.navigationController?.pushViewController(pushVC!, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +67,8 @@ class extractTextVC: UIViewController {
     }
     
     @objc func saveBtnPressed() {
+        let realm = try! Realm()
+        
         var saveAs = UITextField()
         
         let alert = UIAlertController(title: "Save as", message: "Enter a name to save this data as", preferredStyle: .alert)
@@ -72,11 +80,32 @@ class extractTextVC: UIViewController {
         
         let action = UIAlertAction(title: "Save", style: .default) { action in
             print(saveAs.text!)
-            // 저장 버튼 눌렀을 때의 처리 -> 유저 이메일, 데이터 내용, 입력 받은 필드값이 모두 데이터베이스에 저장되어야 함
+            // save data to database
+            let db = receiptsData()
+            db.user = self.userEmail ?? "Not found"
+            db.dataName = saveAs.text ?? "Not found"
+            db.extractedText = self.receiptText ?? "None"
+            
+            try!  realm.write {
+                realm.add(db)
+            }
+            
+            let data = realm.objects(receiptsData.self)
+            print(data)
+            
+            let successAlert = UIAlertController(title: "Success", message: "Saved successfully!", preferredStyle: .alert)
+            let okay = UIAlertAction(title: "OK", style:.default){
+                UIAlertAction in
+                self.movePage(where: "optionsPage")
+            }
+            successAlert.addAction(okay)
+            self.present(successAlert, animated: true, completion: nil)
+            
         }
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
     }
     
     func recognizeText(image: UIImage?) {
@@ -94,11 +123,11 @@ class extractTextVC: UIViewController {
             let myText = observations.compactMap({
                 $0.topCandidates(1).first?.string
             }).joined(separator: "\n")
+            self?.receiptText = myText
             
             DispatchQueue.main.async {
                 self?.label.text = myText
             }
-        
         }
         
         // Process request
@@ -115,6 +144,7 @@ class extractTextVC: UIViewController {
 class receiptsData: Object {
     @objc dynamic var user: String = "" // user’s email address associated with My Receipts
     @objc dynamic var dataName: String = ""
-    @objc dynamic var receipts: String = ""
+    @objc dynamic var extractedText: String = ""
+    
 }
 
