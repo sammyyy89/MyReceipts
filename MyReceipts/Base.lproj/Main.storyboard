@@ -297,6 +297,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="continueBtn" destination="fJV-tC-2sE" eventType="touchUpInside" id="nZT-Cc-9ck"/>
+                                    <segue destination="2zc-w2-LpW" kind="show" id="Wu2-dq-yFc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -352,6 +353,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OzI-ju-iSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4.615384615384615" y="-28.436018957345969"/>
+        </scene>
+        <!--Extract TextVC-->
+        <scene sceneID="w9v-X2-csU">
+            <objects>
+                <viewController id="2zc-w2-LpW" customClass="extractTextVC" customModule="MyReceipts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6bS-C2-zHX">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1143"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvL-ZV-CnB">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="1143"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-Of-6Rx" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="407" height="1200"/>
+                                        <color key="backgroundColor" red="0.0" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1200" id="ZCN-LR-LMF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DsZ-Of-6Rx" firstAttribute="leading" secondItem="cvL-ZV-CnB" secondAttribute="leading" id="Jvf-rb-Qus"/>
+                                    <constraint firstAttribute="trailing" secondItem="DsZ-Of-6Rx" secondAttribute="trailing" id="Mqn-K3-Zcr"/>
+                                    <constraint firstItem="DsZ-Of-6Rx" firstAttribute="top" secondItem="cvL-ZV-CnB" secondAttribute="top" id="lIJ-LS-OHs"/>
+                                    <constraint firstAttribute="bottom" secondItem="DsZ-Of-6Rx" secondAttribute="bottom" id="zp1-b3-GSt"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="00O-JG-D3Q"/>
+                        <color key="backgroundColor" red="0.0" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cvL-ZV-CnB" firstAttribute="top" secondItem="6bS-C2-zHX" secondAttribute="top" id="8vg-LK-4yY"/>
+                            <constraint firstAttribute="trailing" secondItem="cvL-ZV-CnB" secondAttribute="trailing" id="EHC-E3-04B"/>
+                            <constraint firstItem="DsZ-Of-6Rx" firstAttribute="width" secondItem="6bS-C2-zHX" secondAttribute="width" multiplier="1.04359" id="I1P-mG-sNq"/>
+                            <constraint firstItem="cvL-ZV-CnB" firstAttribute="width" secondItem="6bS-C2-zHX" secondAttribute="width" id="g5M-P9-7Qh"/>
+                            <constraint firstItem="00O-JG-D3Q" firstAttribute="bottom" secondItem="cvL-ZV-CnB" secondAttribute="bottom" id="gop-mg-V5k"/>
+                            <constraint firstItem="cvL-ZV-CnB" firstAttribute="leading" secondItem="6bS-C2-zHX" secondAttribute="leading" id="wFK-ez-i1f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pEX-uD-Ozq"/>
+                    <size key="freeformSize" width="390" height="1200"/>
+                    <connections>
+                        <outlet property="contentView" destination="DsZ-Of-6Rx" id="DV7-qm-HA0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TAm-pS-8qG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3621.5384615384614" y="-653.67298578199052"/>
         </scene>
     </scenes>
     <resources>

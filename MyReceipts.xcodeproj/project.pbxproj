@@ -20,6 +20,7 @@
 		84E89F2729213C5E001AE5AC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 84E89F2629213C5E001AE5AC /* Realm */; };
 		84E89F2929213C5E001AE5AC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84E89F2829213C5E001AE5AC /* RealmSwift */; };
 		84E89F2B2921416B001AE5AC /* photoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E89F2A2921416B001AE5AC /* photoVC.swift */; };
+		84E89F2D29214D23001AE5AC /* extractTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E89F2C29214D23001AE5AC /* extractTextVC.swift */; };
 		9C3D9ACCC350E9079FCEDBB5 /* Pods_MyReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3696B9668D7AAAAB28B4BC /* Pods_MyReceipts.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		8411C53329203CAA00CF29DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8411C5352920618F00CF29DF /* mainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainVC.swift; sourceTree = "<group>"; };
 		84E89F2A2921416B001AE5AC /* photoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoVC.swift; sourceTree = "<group>"; };
+		84E89F2C29214D23001AE5AC /* extractTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extractTextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				8409F8062919B62C00ECBDF2 /* receiptsDataVC.swift */,
 				8409F7F629199B8500ECBDF2 /* Main.storyboard */,
 				84E89F2A2921416B001AE5AC /* photoVC.swift */,
+				84E89F2C29214D23001AE5AC /* extractTextVC.swift */,
 				8411C5352920618F00CF29DF /* mainVC.swift */,
 				8409F7F929199B8700ECBDF2 /* Assets.xcassets */,
 				8409F7FB29199B8700ECBDF2 /* LaunchScreen.storyboard */,
@@ -240,6 +243,7 @@
 				8409F8052919B07C00ECBDF2 /* viewReceiptsVC.swift in Sources */,
 				8409F7F329199B8500ECBDF2 /* SceneDelegate.swift in Sources */,
 				8411C5362920618F00CF29DF /* mainVC.swift in Sources */,
+				84E89F2D29214D23001AE5AC /* extractTextVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
