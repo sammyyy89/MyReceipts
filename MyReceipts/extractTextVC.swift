@@ -91,7 +91,8 @@ class extractTextVC: UIViewController {
             }
             
             let data = realm.objects(receiptsData.self)
-            print(data)
+            let currentUserData = data.filter("user == %@", self.userEmail ?? "No matching data")
+            print(currentUserData)
             
             let successAlert = UIAlertController(title: "Success", message: "Saved successfully!", preferredStyle: .alert)
             let okay = UIAlertAction(title: "OK", style:.default){
