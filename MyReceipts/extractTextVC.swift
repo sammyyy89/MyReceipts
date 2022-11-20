@@ -31,8 +31,10 @@ class extractTextVC: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var imageURL: UILabel!
     
     let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
+    var tmp = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class extractTextVC: UIViewController {
         view.addSubview(label)
         view.addSubview(imageView)
         
+        imageURL.text = tmp
+        imageURL.isHidden = true
         recognizeText(image: imageView.image)
     }
     
@@ -91,6 +95,7 @@ class extractTextVC: UIViewController {
             db.user = self.userEmail ?? "Not found"
             db.dataName = saveAs.text ?? "Not found"
             db.extractedText = self.receiptText ?? "None"
+            db.url = self.imageURL.text ?? "Not found"
             
             try!  realm.write {
                 realm.add(db)
@@ -153,5 +158,6 @@ class receiptsData: Object {
     @objc dynamic var user: String = "" // user’s email address associated with My Receipts
     @objc dynamic var dataName: String = ""
     @objc dynamic var extractedText: String = ""
+    @objc dynamic var url: String = ""
 }
 

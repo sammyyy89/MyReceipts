@@ -85,6 +85,7 @@ extension viewReceiptsVC: UITableViewDelegate {
         destVC?.createdAt = from.createdAt
         destVC?.savedName = from.dataName 
         destVC?.data = from.extractedText
+        destVC?.imgUrl = from.url
         
         navigationController?.pushViewController(destVC!, animated: true)
     }

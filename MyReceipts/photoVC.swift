@@ -12,16 +12,19 @@ class photoVC: UIViewController {
     @IBOutlet weak var selectBtn: UIButton!
     @IBOutlet weak var selectedImg: UIImageView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var photoUrl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         continueButton.isHidden = true
+        photoUrl.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "passImage" {
             let dvc = segue.destination as! extractTextVC
-            dvc.imageView.image = selectedImg.image 
+            dvc.imageView.image = selectedImg.image
+            dvc.tmp = photoUrl.text ?? "Not found"
         }
     }
     
@@ -53,6 +56,21 @@ extension photoVC: UIImagePickerControllerDelegate, UINavigationControllerDelega
             selectedImg.image = image
             continueButton.isHidden = false
         }
+        
+        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
+                let imgName = imgUrl.lastPathComponent
+                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+                let localPath = documentDirectory?.appending(imgName)
+
+                let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+                let data = image.pngData()! as NSData
+                data.write(toFile: localPath!, atomically: true)
+                //let imageData = NSData(contentsOfFile: localPath!)!
+                let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
+                print("Photo URL: \(photoURL)")
+                
+                photoUrl.text = photoURL.absoluteString
+            }
         
         picker.dismiss(animated: true, completion: nil)
     }
