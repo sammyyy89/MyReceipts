@@ -23,6 +23,7 @@ class mainVC: UIViewController {
                 try FirebaseAuth.Auth.auth().signOut()
                 self.GoogleBtn.isHidden = false
                 self.signOutBtn.isHidden = true
+                self.moveBtn.isHidden = true 
             } catch {
                 print("Error occurred")
             }
@@ -32,6 +33,8 @@ class mainVC: UIViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    
+    @IBOutlet weak var moveBtn: UIButton!
     
     @IBOutlet weak var GoogleBtn: UIButton!
     @IBAction func GoogleBtnClicked(_ sender: GIDSignInButton) {
@@ -69,6 +72,12 @@ class mainVC: UIViewController {
         signOutBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true 
         signOutBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+        moveBtn.translatesAutoresizingMaskIntoConstraints = false
+        moveBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        moveBtn.topAnchor.constraint(equalTo: signOutBtn.bottomAnchor, constant: 30).isActive = true
+        moveBtn.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        moveBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         showOrHide()
     }
     
@@ -82,9 +91,11 @@ class mainVC: UIViewController {
         if FirebaseAuth.Auth.auth().currentUser != nil {
             // user is signed in
             self.signOutBtn.isHidden = false
+            self.moveBtn.isHidden = false
             self.GoogleBtn.isHidden = true
         } else {
             self.signOutBtn.isHidden = true
+            self.moveBtn.isHidden = true 
             self.GoogleBtn.isHidden = false
         }
     }

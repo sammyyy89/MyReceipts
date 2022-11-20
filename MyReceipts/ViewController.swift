@@ -15,6 +15,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
     
     @IBOutlet weak var lbUsername: UILabel!
     
+    @IBOutlet weak var firstBtn: UIButton!
+    @IBOutlet weak var secondBtn: UIButton!
+    @IBOutlet weak var thirdBtn: UIButton!
+    
     @IBAction func contactBtn(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             let vc = MFMailComposeViewController()
@@ -40,6 +44,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         currentUserName()
@@ -51,13 +56,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
     }
     
     func currentUserName() {
-        if let currentUser = Auth.auth().currentUser {
-            let userName = currentUser.displayName ?? "Name not found"
-            
-            self.lbUsername.text = "Welcome, \(userName)"
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            if let currentUser = Auth.auth().currentUser {
+                let userName = currentUser.displayName ?? "Name not found"
+                
+                self.lbUsername.text = "Welcome, \(userName)"
+            }
+        } else {
+            self.lbUsername.text = "You should login to use our service."
+            self.firstBtn.isHidden = true
+            self.secondBtn.isHidden = true
+            self.thirdBtn.isHidden = true
         }
     }
-    
 }
 
 

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+import FirebaseAuth
 
 func hexStringToUIColor(hex: String) -> UIColor {
     var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -31,11 +33,6 @@ func hexStringToUIColor(hex: String) -> UIColor {
 
 var myBG = hexStringToUIColor(hex: "#AFF8DB")
 
-struct Category {
-    let title: String
-    let items: [String]
-}
-
 class viewReceiptsVC: UIViewController {
     
     private let tableView: UITableView = {
@@ -44,12 +41,13 @@ class viewReceiptsVC: UIViewController {
                        forCellReuseIdentifier: "cell")
         return table
     }()
+
+    //private let data: [Category] = []
+    var load: [receiptsData] = []
+
+    let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
     
-    private let data: [Category] = [
-       // Category(title: "Years", items: ["2020", "2021", "2022"]),
-        Category(title: "Months", items: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
-    ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -58,6 +56,8 @@ class viewReceiptsVC: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        loadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,27 +65,40 @@ class viewReceiptsVC: UIViewController {
         tableView.frame = view.bounds
     }
     
+    func loadData() {
+        let realm = try! Realm()
+        let allData = realm.objects(receiptsData.self)
+        let currentUserData = allData.filter("user == %@", self.userEmail ?? "No matching data")
+        
+        self.load = Array(currentUserData)
+        tableView.reloadData()
+    }
+    
 }
 
 extension viewReceiptsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let category = data[indexPath.row]
+        let from = load[indexPath.row]
         
-        let vc = receiptsDataVC(items: category.items)
-        vc.title = category.title
-        navigationController?.pushViewController(vc, animated: true)
+        let destVC = storyboard?.instantiateViewController(withIdentifier: "dataDetailVC") as? dataDetailVC 
+        destVC?.createdAt = from.createdAt
+        destVC?.savedName = from.dataName 
+        destVC?.data = from.extractedText
+        
+        navigationController?.pushViewController(destVC!, animated: true)
     }
 }
 
 extension viewReceiptsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return load.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row].title
+        cell.textLabel?.text = load[indexPath.row].dataName
+    
         return cell
     }
 }

@@ -74,14 +74,20 @@ class extractTextVC: UIViewController {
         let alert = UIAlertController(title: "Save as", message: "Enter a name to save this data as", preferredStyle: .alert)
         alert.addTextField { alertTextField in
             alertTextField.placeholder = ""
-            
             saveAs = alertTextField
         }
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let now = dateFormatter.string(from: date)
         
         let action = UIAlertAction(title: "Save", style: .default) { action in
             print(saveAs.text!)
             // save data to database
             let db = receiptsData()
+            db.createdAt = now 
             db.user = self.userEmail ?? "Not found"
             db.dataName = saveAs.text ?? "Not found"
             db.extractedText = self.receiptText ?? "None"
@@ -143,9 +149,9 @@ class extractTextVC: UIViewController {
 }
 
 class receiptsData: Object {
+    @objc dynamic var createdAt: String = ""
     @objc dynamic var user: String = "" // user’s email address associated with My Receipts
     @objc dynamic var dataName: String = ""
     @objc dynamic var extractedText: String = ""
-    
 }
 
