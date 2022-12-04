@@ -47,17 +47,21 @@ class viewReceiptsVC: UIViewController {
 
     let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
        
         self.view.backgroundColor = myBG
         
+        tableView.backgroundColor = myBG
+        tableView.separatorColor = .red
+
         view.addSubview(tableView)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         loadData()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,8 +74,23 @@ class viewReceiptsVC: UIViewController {
         let allData = realm.objects(receiptsData.self)
         let currentUserData = allData.filter("user == %@", self.userEmail ?? "No matching data")
         
-        self.load = Array(currentUserData)
-        tableView.reloadData()
+        if currentUserData.isEmpty {
+                        let alert = UIAlertController(title: "No Data", message: "There is no data to display. Please add one.", preferredStyle: .alert)
+                        let okay = UIAlertAction(title: "OK", style:.default){
+                            UIAlertAction in
+                            self.movePage(where: "optionsPage")
+                        }
+                        alert.addAction(okay)
+                        self.present(alert, animated: true, completion: nil)
+        } else {
+            self.load = Array(currentUserData).sorted() {$0.createdAt > $1.createdAt} // from newest // .sorted() {$0.dataName > $1.dataName}
+            tableView.reloadData()
+        }
+    }
+    
+    private func movePage(where: String) {
+        let pushVC = self.storyboard?.instantiateViewController(withIdentifier: `where`)
+        self.navigationController?.pushViewController(pushVC!, animated: true)
     }
     
 }
@@ -97,6 +116,7 @@ extension viewReceiptsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = load[indexPath.row].dataName
     

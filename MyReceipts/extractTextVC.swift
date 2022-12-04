@@ -58,15 +58,15 @@ class extractTextVC: UIViewController {
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        //imageView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 0).isActive = true
         
         saveBtn.translatesAutoresizingMaskIntoConstraints = false
         saveBtn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        saveBtn.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 3).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 30).isActive = true
         saveBtn.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
     }
     
@@ -160,4 +160,3 @@ class receiptsData: Object {
     @objc dynamic var extractedText: String = ""
     @objc dynamic var url: String = ""
 }
-

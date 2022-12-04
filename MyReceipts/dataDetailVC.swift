@@ -50,6 +50,8 @@ class dataDetailVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBOutlet weak var btnUpdate: UIButton!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -98,24 +100,33 @@ class dataDetailVC: UIViewController {
 //        imgReceipt.widthAnchor.constraint(equalToConstant: 270).isActive = true
 //        imgReceipt.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
+        delBtn.setTitle("Delete this data", for: .normal)
         delBtn.translatesAutoresizingMaskIntoConstraints = false
         delBtn.centerXAnchor.constraint(equalTo: SV.centerXAnchor).isActive = true
-        delBtn.topAnchor.constraint(equalTo: lbDate.bottomAnchor, constant: 10).isActive = true
-        delBtn.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        delBtn.topAnchor.constraint(equalTo: lbDate.bottomAnchor, constant: 30).isActive = true
+        delBtn.widthAnchor.constraint(equalToConstant: 200).isActive = true
         delBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        btnUpdate.setTitle("Update this data", for: .normal)
+        btnUpdate.translatesAutoresizingMaskIntoConstraints = false
+        btnUpdate.centerXAnchor.constraint(equalTo: SV.centerXAnchor).isActive = true
+        btnUpdate.topAnchor.constraint(equalTo: lbDate.bottomAnchor, constant: 80).isActive = true
+        btnUpdate.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        btnUpdate.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         lbDate.text = createdAt
        // dataName.text = savedName
         detail.text = data
-       // imgReceipt.image = UIImage(named: "receipt1")
-        
-//        let url = URL(string: imgUrl)
-//        if let imgData = try? Data(contentsOf: url!)
-//        {
-//            let imageToShow = UIImage(data: imgData)
-//            imgReceipt.image = imageToShow
-//        }
-        
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "sendPathSegue") {
+            let destVC = segue.destination as! showReceiptVC
+            destVC.imgPath = imgUrl
+            destVC.createdDate = createdAt
+            destVC.texts = data
+        }
     }
     
     private func movePage(where: String) {
