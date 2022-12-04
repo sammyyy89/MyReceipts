@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
 
-class mainVC: UIViewController { // UIViewController {
+class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController {
     
     @IBOutlet weak var appName: UILabel!
     @IBOutlet weak var lbSub: UILabel!
@@ -79,6 +79,7 @@ class mainVC: UIViewController { // UIViewController {
         moveBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         showOrHide()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {

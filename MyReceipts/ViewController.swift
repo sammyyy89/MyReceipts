@@ -11,7 +11,7 @@ import SafariServices
 import FirebaseAuth
 
 
-class ViewController: UIViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UITabBarControllerDelegate {
     
     @IBOutlet weak var lbUsername: UILabel!
     
@@ -48,7 +48,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
         super.viewDidLoad()
         
         currentUserName()
-
+        //self.tabBarController?.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        currentUserName()
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -61,9 +67,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
                 let userName = currentUser.displayName ?? "Name not found"
                 
                 self.lbUsername.text = "Welcome, \(userName)"
+                self.firstBtn.isHidden = false
+                self.secondBtn.isHidden = false
+                self.thirdBtn.isHidden = false
             }
         } else {
-            self.lbUsername.text = "You should login to use our service."
+            self.lbUsername.text = "Please login to use My Receipts."
             self.firstBtn.isHidden = true
             self.secondBtn.isHidden = true
             self.thirdBtn.isHidden = true

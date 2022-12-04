@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class photoVC: UIViewController {
     
+    @IBOutlet weak var lbMain: UILabel!
+    @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var selectBtn: UIButton!
     @IBOutlet weak var selectedImg: UIImageView!
     @IBOutlet weak var continueButton: UIButton!
@@ -18,6 +21,14 @@ class photoVC: UIViewController {
         super.viewDidLoad()
         continueButton.isHidden = true
         photoUrl.isHidden = true
+        
+        checkLogin()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkLogin()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -45,6 +56,20 @@ class photoVC: UIViewController {
     
     @IBAction func continueBtn() {
         print("Continue with this photo")
+    }
+    
+    func checkLogin() {
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            if let currentUser = Auth.auth().currentUser {
+                self.lbMain.text = "How would you like to get your receipt?"
+                self.cameraBtn.isHidden = false
+                self.selectBtn.isHidden = false
+            }
+        } else {
+            self.lbMain.text = "Login is required to use My Receipts"
+            self.cameraBtn.isHidden = true
+            self.selectBtn.isHidden = true
+        }
     }
     
 }

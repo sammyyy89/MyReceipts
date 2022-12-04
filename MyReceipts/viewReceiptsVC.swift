@@ -36,6 +36,8 @@ var mySeparatorColor = hexStringToUIColor(hex: "#00A876")
 
 class viewReceiptsVC: UIViewController {
     
+    @IBOutlet weak var label: UILabel!
+    
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self,
@@ -61,13 +63,33 @@ class viewReceiptsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        loadData()
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            label.isHidden = true
+            self.tableView.isHidden = false
+            loadData()
+        } else {
+            label.text = "Please login to use My Receipts"
+            label.isHidden = false
+            self.tableView.isHidden = true
+        }
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            label.isHidden = true
+            self.tableView.isHidden = false
+            loadData()
+        } else {
+            label.text = "Please login to use My Receipts"
+            label.isHidden = false
+            self.tableView.isHidden = true
+        }
     }
     
     func loadData() {
