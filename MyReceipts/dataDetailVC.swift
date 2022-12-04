@@ -13,7 +13,8 @@ class dataDetailVC: UIViewController {
     var createdAt = ""
     var savedName = ""
     var data = ""
-    var imgUrl = "" 
+    var imgUrl = ""
+    var uniqueKey = "" 
     
     @IBOutlet weak var SV: UIScrollView!
     
@@ -126,6 +127,7 @@ class dataDetailVC: UIViewController {
             destVC.imgPath = imgUrl
             destVC.createdDate = createdAt
             destVC.texts = data
+            destVC.uniqueKey = uniqueKey 
         }
     }
     

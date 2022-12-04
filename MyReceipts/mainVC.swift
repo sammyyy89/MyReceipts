@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
 
-class mainVC: UIViewController {
+class mainVC: UIViewController { // UIViewController {
     
     @IBOutlet weak var appName: UILabel!
     @IBOutlet weak var lbSub: UILabel!

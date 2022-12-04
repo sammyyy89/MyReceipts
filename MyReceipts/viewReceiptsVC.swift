@@ -32,6 +32,7 @@ func hexStringToUIColor(hex: String) -> UIColor {
 }
 
 var myBG = hexStringToUIColor(hex: "#AFF8DB")
+var mySeparatorColor = hexStringToUIColor(hex: "#00A876")
 
 class viewReceiptsVC: UIViewController {
     
@@ -53,7 +54,7 @@ class viewReceiptsVC: UIViewController {
         self.view.backgroundColor = myBG
         
         tableView.backgroundColor = myBG
-        tableView.separatorColor = .red
+        tableView.separatorColor = mySeparatorColor
 
         view.addSubview(tableView)
         
@@ -83,7 +84,7 @@ class viewReceiptsVC: UIViewController {
                         alert.addAction(okay)
                         self.present(alert, animated: true, completion: nil)
         } else {
-            self.load = Array(currentUserData).sorted() {$0.createdAt > $1.createdAt} // from newest // .sorted() {$0.dataName > $1.dataName}
+            self.load = Array(currentUserData)//.sorted() {$0.createdAt > $1.createdAt} // from newest // .sorted() {$0.dataName > $1.dataName}
             tableView.reloadData()
         }
     }
@@ -105,6 +106,7 @@ extension viewReceiptsVC: UITableViewDelegate {
         destVC?.savedName = from.dataName 
         destVC?.data = from.extractedText
         destVC?.imgUrl = from.url
+        destVC?.uniqueKey = from.uniqueKey 
         
         navigationController?.pushViewController(destVC!, animated: true)
     }
@@ -119,6 +121,7 @@ extension viewReceiptsVC: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = load[indexPath.row].dataName
+        cell.backgroundColor = myBG
     
         return cell
     }

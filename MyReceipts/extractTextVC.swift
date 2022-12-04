@@ -36,8 +36,12 @@ class extractTextVC: UIViewController {
     let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
     var tmp = ""
     
+    let randomInt = Int.random(in: 100000..<999999)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("random Num: \(randomInt)")
         
         view.addSubview(label)
         view.addSubview(imageView)
@@ -56,8 +60,8 @@ class extractTextVC: UIViewController {
         super.viewDidLayoutSubviews()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         //imageView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -66,8 +70,10 @@ class extractTextVC: UIViewController {
         
         saveBtn.translatesAutoresizingMaskIntoConstraints = false
         saveBtn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        saveBtn.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 30).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20).isActive = true
         saveBtn.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
+        saveBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        saveBtn.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     @objc func saveBtnPressed() {
@@ -77,20 +83,21 @@ class extractTextVC: UIViewController {
         
         let alert = UIAlertController(title: "Save as", message: "Enter a name to save this data as", preferredStyle: .alert)
         alert.addTextField { alertTextField in
-            alertTextField.placeholder = ""
+            alertTextField.placeholder = "Enter name here"
             saveAs = alertTextField
         }
         
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let now = dateFormatter.string(from: date)
         
         let action = UIAlertAction(title: "Save", style: .default) { action in
             print(saveAs.text!)
             // save data to database
             let db = receiptsData()
+            db.uniqueKey = "\(now)+\(self.randomInt)"
             db.createdAt = now 
             db.user = self.userEmail ?? "Not found"
             db.dataName = saveAs.text ?? "Not found"
@@ -154,6 +161,7 @@ class extractTextVC: UIViewController {
 }
 
 class receiptsData: Object {
+    @objc dynamic var uniqueKey: String = ""
     @objc dynamic var createdAt: String = ""
     @objc dynamic var user: String = "" // user’s email address associated with My Receipts
     @objc dynamic var dataName: String = ""

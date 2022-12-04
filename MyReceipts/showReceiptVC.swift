@@ -13,6 +13,7 @@ class showReceiptVC: UIViewController {
     
     @IBOutlet weak var updateBtn: UIButton!
     @IBAction func updateClicked(_ sender: Any) {
+        print("unique: \(uniqueKey)")
         if self.tfNewName.text == "" {
             let errorAlert = UIAlertController(title: "Empty Field", message: "Please enter a name to save as", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style:.default){
@@ -24,7 +25,8 @@ class showReceiptVC: UIViewController {
         } else {
             let realm = try! Realm()
             let allData = realm.objects(receiptsData.self)
-            if let currentData = allData.filter("user == %@", self.currUser!, "createdAt == %@", createdDate).first {
+            if let currentData = allData.filter("uniqueKey == %@", uniqueKey).first {
+                
                 try! realm.write {
                     currentData.dataName = self.tfNewName.text!
                     currentData.extractedText = self.tfTexts.text!
@@ -43,6 +45,7 @@ class showReceiptVC: UIViewController {
     var imgPath = ""
     var createdDate = ""
     var texts = ""
+    var uniqueKey = ""
     
     var currUser = FirebaseAuth.Auth.auth().currentUser?.email
 
@@ -56,7 +59,6 @@ class showReceiptVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
         self.view.backgroundColor = myBG
         tfTexts.text = texts
         
