@@ -46,14 +46,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         currentUserName()
         //self.tabBarController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         currentUserName()
     }
     

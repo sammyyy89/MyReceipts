@@ -34,19 +34,22 @@ func hexStringToUIColor(hex: String) -> UIColor {
 var myBG = hexStringToUIColor(hex: "#AFF8DB")
 var mySeparatorColor = hexStringToUIColor(hex: "#00A876")
 
-class viewReceiptsVC: UIViewController {
+class viewReceiptsVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var label: UILabel!
-    
-    private let tableView: UITableView = {
-        let table = UITableView()
-        table.register(UITableViewCell.self,
-                       forCellReuseIdentifier: "cell")
-        return table
-    }()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var field: UITextField!
 
-    //private let data: [Category] = []
+//    private let tableView: UITableView = {
+//        let table = UITableView()
+//        table.register(UITableViewCell.self,
+//                       forCellReuseIdentifier: "cell")
+//        return table
+//    }()
+
     var load: [receiptsData] = []
+    var filtered = [String]()
+    var isFiltered = false
 
     let userEmail = FirebaseAuth.Auth.auth().currentUser?.email ?? nil
     
@@ -58,38 +61,52 @@ class viewReceiptsVC: UIViewController {
         tableView.backgroundColor = myBG
         tableView.separatorColor = mySeparatorColor
 
-        view.addSubview(tableView)
+        checkLogin()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        if FirebaseAuth.Auth.auth().currentUser != nil {
-            label.isHidden = true
-            self.tableView.isHidden = false
-            loadData()
-        } else {
-            label.text = "Please login to use My Receipts"
-            label.isHidden = false
-            self.tableView.isHidden = true
-        }
+        field.delegate = self
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        tableView.frame = view.bounds
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
-        if FirebaseAuth.Auth.auth().currentUser != nil {
-            label.isHidden = true
-            self.tableView.isHidden = false
-            loadData()
-        } else {
-            label.text = "Please login to use My Receipts"
-            label.isHidden = false
-            self.tableView.isHidden = true
+        super.viewWillAppear(animated)
+        checkLogin()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            if string.count == 0 {
+                filterText(String(text.dropLast()))
+            } else {
+                filterText(text+string)
+            }
         }
+        
+        return true
+    }
+    
+    func filterText(_ query: String) {
+        filtered.removeAll()
+        
+        let realm = try! Realm()
+        let allData = realm.objects(receiptsData.self)
+        let currentUserData = allData.filter("user == %@", self.userEmail ?? "No matching data")
+        
+        self.load = Array(currentUserData).sorted() {$0.createdAt > $1.createdAt}
+        
+        for dt in load {
+            if dt.dataName.lowercased().starts(with: query.lowercased()) {
+                filtered.append(dt.dataName)
+            }
+        }
+        tableView.reloadData()
+        isFiltered = true
     }
     
     func loadData() {
@@ -106,8 +123,23 @@ class viewReceiptsVC: UIViewController {
                         alert.addAction(okay)
                         self.present(alert, animated: true, completion: nil)
         } else {
-            self.load = Array(currentUserData)//.sorted() {$0.createdAt > $1.createdAt} // from newest // .sorted() {$0.dataName > $1.dataName}
+            self.load = Array(currentUserData).sorted() {$0.createdAt > $1.createdAt} // from newest
             tableView.reloadData()
+        }
+    }
+    
+    func checkLogin(){
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            //view.addSubview(tableView)
+            field.isHidden = false
+            label.isHidden = true
+            self.tableView.isHidden = false
+            loadData()
+        } else {
+            label.text = "Please login to use My Receipts"
+            label.isHidden = false
+            field.isHidden = true
+            self.tableView.isHidden = true
         }
     }
     
@@ -123,12 +155,12 @@ extension viewReceiptsVC: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let from = load[indexPath.row]
         
-        let destVC = storyboard?.instantiateViewController(withIdentifier: "dataDetailVC") as? dataDetailVC 
+        let destVC = storyboard?.instantiateViewController(withIdentifier: "dataDetailVC") as? dataDetailVC
         destVC?.createdAt = from.createdAt
         destVC?.savedName = from.dataName 
         destVC?.data = from.extractedText
         destVC?.imgUrl = from.url
-        destVC?.uniqueKey = from.uniqueKey 
+        destVC?.uniqueKey = from.uniqueKey
         
         navigationController?.pushViewController(destVC!, animated: true)
     }
@@ -136,13 +168,20 @@ extension viewReceiptsVC: UITableViewDelegate {
 
 extension viewReceiptsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return load.count
+        if !filtered.isEmpty {
+            return filtered.count
+        }
+        return isFiltered ? 0 : load.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = load[indexPath.row].dataName
+        if !filtered.isEmpty {
+            cell.textLabel?.text = filtered[indexPath.row]//.dataName
+        } else {
+            cell.textLabel?.text = load[indexPath.row].dataName
+        }
         cell.backgroundColor = myBG
     
         return cell

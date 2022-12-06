@@ -18,7 +18,7 @@ class showReceiptVC: UIViewController {
             let errorAlert = UIAlertController(title: "Empty Field", message: "Please enter a name to save as", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style:.default){
                 UIAlertAction in
-                print("This text field should not be empty.")
+                print("File name didn't change")
             }
             errorAlert.addAction(ok)
             self.present(errorAlert, animated: true, completion: nil)
@@ -46,6 +46,7 @@ class showReceiptVC: UIViewController {
     var createdDate = ""
     var texts = ""
     var uniqueKey = ""
+    var savedName = ""
     
     var currUser = FirebaseAuth.Auth.auth().currentUser?.email
 
@@ -60,8 +61,8 @@ class showReceiptVC: UIViewController {
         
         super.viewDidLoad()
         self.view.backgroundColor = myBG
+        tfNewName.text = savedName
         tfTexts.text = texts
-        
 
     }
         

@@ -24,8 +24,8 @@ class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController
                 self.GoogleBtn.isHidden = false
                 self.signOutBtn.isHidden = true
                 self.moveBtn.isHidden = true 
-            } catch {
-                print("Error occurred")
+            } catch let error {
+                print("Error occurred: \(error.localizedDescription)")
             }
         }
         let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
@@ -60,12 +60,14 @@ class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController
                     self.movePage(where: "optionsPage")
                 }
             }
+            
+//            UserDefaults.standard.set(true, forKey: "isLoggedIn")
+//            UserDefaults.standard.synchronize()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         signOutBtn.translatesAutoresizingMaskIntoConstraints = false
         signOutBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         signOutBtn.topAnchor.constraint(equalTo: lbSub.bottomAnchor, constant: 50).isActive = true
@@ -87,6 +89,10 @@ class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController
         
         showOrHide()
     }
+    
+//    fileprivate func isLoggedIn() -> Bool {
+//        return UserDefaults.standard.bool(forKey: "isLoggedIn")
+//    }
     
     private func showOrHide() {
         if FirebaseAuth.Auth.auth().currentUser != nil {

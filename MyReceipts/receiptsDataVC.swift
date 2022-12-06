@@ -30,7 +30,7 @@ class receiptsDataVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
         
         view.addSubview(tableView)
         tableView.delegate = self
@@ -58,13 +58,3 @@ class receiptsDataVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(items[indexPath.row])
     }
 }
-
-//func loadImagefromPath(_ path: NSString) -> UIImage? {
-//    let image = UIImage(contentsOfFile: path as String)
-//
-//    if image == nil {
-//        return UIImage()
-//    } else {
-//        return image
-//    }
-//}

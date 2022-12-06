@@ -127,7 +127,8 @@ class dataDetailVC: UIViewController {
             destVC.imgPath = imgUrl
             destVC.createdDate = createdAt
             destVC.texts = data
-            destVC.uniqueKey = uniqueKey 
+            destVC.uniqueKey = uniqueKey
+            destVC.savedName = savedName 
         }
     }
     
