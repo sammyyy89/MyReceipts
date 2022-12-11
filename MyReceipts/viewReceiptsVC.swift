@@ -31,7 +31,7 @@ func hexStringToUIColor(hex: String) -> UIColor {
     )
 }
 
-var myBG = hexStringToUIColor(hex: "#AFF8DB")
+var myBG = hexStringToUIColor(hex: "#FFE3E8")
 var mySeparatorColor = hexStringToUIColor(hex: "#00A876")
 
 class viewReceiptsVC: UIViewController, UITextFieldDelegate {

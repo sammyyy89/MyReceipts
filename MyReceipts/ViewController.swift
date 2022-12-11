@@ -25,16 +25,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, MFMailCo
             vc.delegate = self
             vc.setSubject("Contact Us / Feedback")
             vc.setToRecipients(["san1@mercy.edu"])
-            vc.setMessageBody("<h1>Hello world</h1>", isHTML: true)
+            vc.setMessageBody("<h1>Thank you for using My Receipts</h1>", isHTML: true)
             //vc.addAttachmentData(<#T##attachment: Data##Data#>, mimeType: "plain/txt", fileName: <#T##String#>)
             present(UINavigationController(rootViewController:vc), animated: true)
         }
         else {
-//            let alert = UIAlertController(title: "Email Not Available", message: "This device is unable to send an email. We will redirect you to gmail.com", preferredStyle: .alert)
-//            let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alert.addAction(OK)
-//            present(alert, animated: true, completion: nil)
-            
             guard let url = URL(string: "https://www.gmail.com") else {
                 return
             }

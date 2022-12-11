@@ -64,11 +64,15 @@ class photoVC: UIViewController {
                 self.lbMain.text = "How would you like to get your receipt?"
                 self.cameraBtn.isHidden = false
                 self.selectBtn.isHidden = false
+                //self.continueButton.isHidden = false
+                self.selectedImg.isHidden = false
             }
         } else {
             self.lbMain.text = "Login is required to use My Receipts"
             self.cameraBtn.isHidden = true
             self.selectBtn.isHidden = true
+            self.continueButton.isHidden = true
+            self.selectedImg.isHidden = true
         }
     }
     

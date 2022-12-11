@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
 
+
 class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController {
     
     @IBOutlet weak var appName: UILabel!
@@ -68,6 +69,9 @@ class mainVC: UIViewController, UITabBarControllerDelegate { // UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = myBG
+        
         signOutBtn.translatesAutoresizingMaskIntoConstraints = false
         signOutBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         signOutBtn.topAnchor.constraint(equalTo: lbSub.bottomAnchor, constant: 50).isActive = true

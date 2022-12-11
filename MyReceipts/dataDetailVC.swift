@@ -59,18 +59,6 @@ class dataDetailVC: UIViewController {
        
         self.view.backgroundColor = myBG
     
-//        savedAs.translatesAutoresizingMaskIntoConstraints = false
-//        savedAs.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        savedAs.topAnchor.constraint(equalTo: lbDate.bottomAnchor, constant: 3).isActive = true
-//        savedAs.widthAnchor.constraint(equalToConstant: 150).isActive = true
-//        savedAs.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//
-//        dataName.translatesAutoresizingMaskIntoConstraints = false
-//        dataName.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        dataName.topAnchor.constraint(equalTo: savedAs.bottomAnchor, constant: 3).isActive = true
-//        dataName.widthAnchor.constraint(equalToConstant: 150).isActive = true
-//        dataName.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//
         extractedTexts.translatesAutoresizingMaskIntoConstraints = false
         extractedTexts.centerXAnchor.constraint(equalTo: SV.centerXAnchor).isActive = true
         extractedTexts.topAnchor.constraint(equalTo: SV.topAnchor, constant: 70).isActive = true

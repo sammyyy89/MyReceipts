@@ -63,7 +63,6 @@ class showReceiptVC: UIViewController {
         self.view.backgroundColor = myBG
         tfNewName.text = savedName
         tfTexts.text = texts
-
     }
         
     private func movePage(where: String) {
