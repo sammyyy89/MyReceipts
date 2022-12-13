@@ -5,9 +5,10 @@
 //  Created by Saemi An on 11/7/22.
 //
 
-import GoogleSignIn
+// import GoogleSignIn
 import FirebaseCore
 import UIKit
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
